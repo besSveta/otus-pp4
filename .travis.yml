@@ -1,6 +1,15 @@
 dist: xenial
 language: cpp
 compiler: clang
+branches:
+  only:
+    - master
+
+# Install dependencies
+addons:
+  apt:
+    packages:
+      - doxygen
 before_script:
 - sudo apt update
 - sudo apt install libboost-test-dev libspdlog-dev -y
@@ -9,8 +18,14 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
+- doxygen Doxyfile
 deploy:
   provider: script
   skip_cleanup: true
   script:
   - curl -T cmake-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ubesSveta:$BINTRAY_API_KEY "https://api.bintray.com/content/bessveta/otus-cpp/homework1/homework4/cmake-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
+ provider: pages
+  local_dir: html
+  github_token: $GH_REPO_TOKEN
+  on:
+	branch: master
