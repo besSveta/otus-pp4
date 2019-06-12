@@ -46,4 +46,4 @@ include(CPack)
 
 enable_testing()
 
-add_test(allocatorTest test_allocator)
+add_test(printIpTest test_printIp)
