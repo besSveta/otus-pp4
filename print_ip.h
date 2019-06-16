@@ -148,7 +148,7 @@ struct IpPrinter<TypeId::String, T> {
 };
 
 
-struct CommonIpPrinter {
+namespace CommonIpPrinter {
 	template<typename T>
 	static void PrintIp(const T &someIp, std::ostream& out=std::cout) {
 		// std::cout<<static_cast<int>(TypeIdValue_v<T>)<< " ";
