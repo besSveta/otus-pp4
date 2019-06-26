@@ -4,11 +4,11 @@ project(print_ip VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 find_package(Threads REQUIRED)
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-add_executable(printIp print_ip.cpp)
+add_executable(print_ip print_ip.cpp)
 add_library(printIplib print_ip_lib.cpp)
 add_executable(test_printIp test_print_ip.cpp)
 
-set_target_properties(printIp printIplib test_printIp PROPERTIES
+set_target_properties(print_ip printIplib test_printIp PROPERTIES
 	CXXSTANDARD 17
 	CSS_STANDARD_REQUIRED ON
 	COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
@@ -19,7 +19,7 @@ set_target_properties(test_printIp PROPERTIES
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
-target_link_libraries(printIp 
+target_link_libraries(print_ip 
 	printIplib
     Threads::Threads
 )
@@ -29,7 +29,7 @@ target_link_libraries(test_printIp
 	printIplib
 )
 	
-install(TARGETS printIp RUNTIME DESTINATION bin)
+install(TARGETS print_ip RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
