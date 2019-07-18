@@ -4,7 +4,6 @@
  *  Created on: 12 июн. 2019 г.
  *      Author: sveta
  */
-#pragma once
 #ifndef PRINT_IP_H_
 #define PRINT_IP_H_
 
