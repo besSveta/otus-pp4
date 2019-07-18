@@ -117,12 +117,12 @@ struct IpPrinter<TypeId::Container, T> {
 template<typename T>
 struct IpPrinter<TypeId::Integral, T> {
 	static void PrintIp(T someIp,std::ostream& out) {
-		out << int2ip(static_cast<long long>(someIp), sizeof(T));
+		out << int2ip(someIp);
 		out << std::endl;
 	}
 private:
-	static std::string int2ip(const long long ip, int size) {
-
+	static std::string int2ip(const T ip) {
+	    int size = sizeof(T);
 		std::vector<unsigned char> bytes(size);
 		auto t = 0;
 		for (auto i = bytes.begin(); i != bytes.end() ; i++) {

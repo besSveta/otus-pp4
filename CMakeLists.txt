@@ -9,8 +9,8 @@ add_library(printIplib print_ip_lib.cpp)
 add_executable(test_printIp test_print_ip.cpp)
 
 set_target_properties(print_ip printIplib test_printIp PROPERTIES
-	CXXSTANDARD 17
-	CSS_STANDARD_REQUIRED ON
+	CXX_STANDARD 17
+	CXX_STANDARD_REQUIRED ON
 	COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
 )
 
